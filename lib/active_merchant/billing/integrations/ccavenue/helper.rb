@@ -4,7 +4,7 @@ module ActiveMerchant #:nodoc:
       module Ccavenue
         class Helper < ActiveMerchant::Billing::Integrations::Helper
 			include RequiresParameters
-			attr_reader   :merchant_id,:workingKey
+			attr_reader   :merchant_id,:credential2
 		 	mapping :amount, 'Amount'
 			mapping :order, 'Order_Id'
 			mapping :Checksum,'Checksum'
@@ -35,7 +35,7 @@ module ActiveMerchant #:nodoc:
 
 			
 			def initialize(order_id, account,  options = {}) 
-				requires!(options, :workingKey, :amount, :currency)
+				requires!(options, :credential2, :amount, :currency)
 				@options = options
 				@merchant_id = account  
 				
@@ -43,7 +43,7 @@ module ActiveMerchant #:nodoc:
 		  
 			def redirect(mapping = {}) 
 				add_field( 'Redirect_Url', mapping[:redirect_url])
-				add_field('Checksum', getchecksum(@merchant_id,@options[:amount],order_id,mapping[:return_url],@options[:workingKey]))
+				add_field('Checksum', getchecksum(@merchant_id,@options[:amount],order_id,mapping[:return_url],@options[:credential2]))
 				add_field('Merchant_Id', @merchant_id) 
 			end
 			private

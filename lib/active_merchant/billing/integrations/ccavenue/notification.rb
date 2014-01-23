@@ -9,7 +9,7 @@ module ActiveMerchant #:nodoc:
 				 
 				#super(post, options)
 				@merchant_id = account
-				@workingKey  = options[:workingKey]
+				@credential2  = options[:credential2]
 			end
 			
 			def valid?	
@@ -19,7 +19,7 @@ module ActiveMerchant #:nodoc:
 					 self.Amount,
 					 self.AuthDesc,
 					 self.CheckSum,
-					 @workingKey
+					 @credential2
 				)
 			end
 			
