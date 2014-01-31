@@ -41,6 +41,12 @@ module ActiveMerchant #:nodoc:
             data
           end
           
+          # valid_keys:
+          #[[:amount, :currency, :test,
+          #  :credential2, :credential3, :credential4,
+          #  :country,
+          #  :account_name, :transaction_type, :authcode]]
+
           # Replace with the real mapping
           mapping :account, 'WMI_MERCHANT_ID'
           mapping :amount, 'WMI_PAYMENT_AMOUNT'
@@ -49,9 +55,9 @@ module ActiveMerchant #:nodoc:
           mapping :currency, 'WMI_CURRENCY_ID'
 
           #mapping :notify_url, 'result_url'
-          mapping :return_url, 'WMI_SUCCESS_URL'
-          mapping :cancel_return_url, 'WMI_FAIL_URL'
-          mapping :description, 'WMI_DESCRIPTION'
+          mapping :credential3, 'WMI_SUCCESS_URL'
+          mapping :credential4, 'WMI_FAIL_URL'
+          mapping :credential2, 'WMI_DESCRIPTION'
           
           #mapping :custom_fields, 'custom_fields'
         end
